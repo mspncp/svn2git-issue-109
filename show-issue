@@ -1,0 +1,200 @@
+#!/bin/bash
+#
+# Branches are missing from exported submodules
+#
+# https://github.com/svn-all-fast-export/svn2git/issues/109
+
+set -o errexit
+
+# use -r option to recreate the issue
+if [ "$1" == "-r" ]; then
+    rm -rf issue
+fi
+
+mkdir -p issue
+cd issue
+
+svn_url="file://$(readlink -f example.svn)"
+
+if [ ! -e example.svn ]; then
+
+    svnadmin create example.svn
+
+    # COMMIT 1 - Create ttb structure
+    svn mkdir $svn_url/trunk $svn_url/tags $svn_url/branches -m "Create ttb structure"
+
+    svn co $svn_url/trunk example
+
+    cd example
+    mkdir src other
+
+    for f in foo bar baz; do
+        echo $f > $f.txt
+        echo $f > src/$f.c
+        echo $f > other/$f.py
+    done
+
+    # COMMIT 2 - Add my files
+
+    svn add *.txt
+    svn add src
+    svn ci  -m "Add my files"
+
+    # COMMIT 3 - Add other files
+
+    svn add other
+    svn ci  -m "Add other files"
+
+    # COMMIT 4 - Create feature branch
+
+    svn cp $svn_url/trunk $svn_url/branches/feature -m "Create feature branch"
+
+    # COMMIT 5 - Add some stuff to my files
+
+    echo "some stuff" >> bar.txt
+    echo "some stuff" >> src/bar.c
+    svn ci -m "Add some stuff to my files"
+
+    # COMMIT 7 - Add some stuff to other files
+
+    echo "some stuff" >> other/bar.py
+    svn ci -m "Add some stuff to other files"
+
+    svn switch ^/branches/feature
+
+    # COMMIT 8 - Add more stuff to my files
+
+    echo "more stuff" >> bar.txt
+    echo "more stuff" >> src/bar.c
+    svn ci -m "Add more stuff to my files"
+
+    # COMMIT 10 - Add some stuff to other files
+
+    echo "more stuff" >> other/bar.py
+    svn ci -m "Add more stuff to other files"
+
+    cd ..
+fi
+
+
+cat > broken.rules <<EOF
+
+create repository broken/main.git
+end repository
+
+create repository broken/other.git
+end repository
+
+
+match /trunk/other/
+  repository broken/other.git
+  branch master
+end match
+
+match /trunk/
+  repository broken/main.git
+  branch master
+end match
+
+match /branches/([^/]+)/other/
+  repository broken/other.git
+  branch \1
+end match
+
+match /branches/([^/]+)/
+  repository broken/main.git
+  branch \1
+end match
+EOF
+
+cat > main.rules <<EOF
+create repository fixed/main.git
+end repository
+
+match /trunk/other/
+  action ignore
+end match
+
+match /trunk/
+  repository fixed/main.git
+  branch master
+end match
+
+match /branches/([^/]+)/other/
+  action ignore
+end match
+
+match /branches/([^/]+)/
+  repository fixed/main.git
+  branch \1
+end match
+EOF
+
+cat > other.rules <<EOF
+create repository fixed/other.git
+end repository
+
+match /trunk/other/
+  repository fixed/other.git
+  branch master
+end match
+
+match /branches/([^/]+)/$
+  action recurse
+end match
+
+match /branches/([^/]+)/other/
+  repository fixed/other.git
+  branch \1
+end match
+
+match /
+  action ignore
+end match
+EOF
+
+
+mkdir -p broken
+(
+    set -o xtrace
+    svn-all-fast-export --debug-rules --add-metadata --rules broken.rules example.svn
+) |& tee broken.log
+
+
+mkdir -p fixed
+(
+    set -o xtrace
+    svn-all-fast-export --debug-rules --add-metadata --rules main.rules,other.rules example.svn
+
+) |& tee fixed.log
+
+echo
+echo "##"
+echo "## example.svn"
+echo "##"
+
+svn log -v $svn_url   > example.log
+
+
+for solution in broken fixed; do
+    (
+        for repo in main other; do
+            r=$solution/$repo.git
+            echo
+            echo "##"
+            echo "## $r"
+            echo "##"
+            git -C $r log --all --graph --stat master feature
+            
+            for b in master feature; do
+                echo
+                echo "tree of $b branch:"
+                git -C $r ls-tree -r $b
+            done
+        done
+    )  |& tee -a $solution.log
+done
+
+# Local Variables:
+# indent-tabs-mode: nil
+# End:
