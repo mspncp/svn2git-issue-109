@@ -1,0 +1,20 @@
+create repository msp/main.git
+end repository
+
+match /trunk/other/
+  action ignore
+end match
+
+match /trunk/
+  repository msp/main.git
+  branch master
+end match
+
+match /branches/([^/]+)/other/
+  action ignore
+end match
+
+match /branches/([^/]+)/
+  repository msp/main.git
+  branch \1
+end match

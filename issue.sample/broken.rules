@@ -1,0 +1,27 @@
+
+create repository broken/main.git
+end repository
+
+create repository broken/other.git
+end repository
+
+
+match /trunk/other/
+  repository broken/other.git
+  branch master
+end match
+
+match /trunk/
+  repository broken/main.git
+  branch master
+end match
+
+match /branches/([^/]+)/other/
+  repository broken/other.git
+  branch \1
+end match
+
+match /branches/([^/]+)/
+  repository broken/main.git
+  branch \1
+end match

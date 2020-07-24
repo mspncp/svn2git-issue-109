@@ -1,0 +1,57 @@
++ svn-all-fast-export --debug-rules --add-metadata --rules broken.rules example.svn
+WARNING; no identity-map or -domain specified, all commits will use default @localhost email address
+
+Loading rules from: "broken.rules"
+Loading rules from "broken.rules"
+Creating new repository "broken/main.git"
+Creating new repository "broken/other.git"
+Invoked as:' svn-all-fast-export --debug-rules --add-metadata --rules broken.rules example.svn'
+Exporting revision 1  nothing to do
+Exporting revision 2 rev 2 /trunk/bar.txt matched rule: "broken.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/bar.txt -> "master" "bar.txt" )
+rev 2 /trunk/baz.txt matched rule: "broken.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/baz.txt -> "master" "baz.txt" )
+rev 2 /trunk/foo.txt matched rule: "broken.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/foo.txt -> "master" "foo.txt" )
+rev 2 /trunk/src/bar.c matched rule: "broken.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/src/bar.c -> "master" "src/bar.c" )
+rev 2 /trunk/src/baz.c matched rule: "broken.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/src/baz.c -> "master" "src/baz.c" )
+rev 2 /trunk/src/foo.c matched rule: "broken.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/src/foo.c -> "master" "src/foo.c" )
+WARN: Branch "master" in repository "broken/main.git" doesn't exist at revision 2 -- did you resume from the wrong revision?
+ 6 modifications from SVN /trunk/ to broken/main.git/master done
+Exporting revision 3 rev 3 /trunk/other/bar.py matched rule: "broken.rules:9 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/bar.py -> "master" "bar.py" )
+rev 3 /trunk/other/baz.py matched rule: "broken.rules:9 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/baz.py -> "master" "baz.py" )
+rev 3 /trunk/other/foo.py matched rule: "broken.rules:9 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/foo.py -> "master" "foo.py" )
+WARN: Branch "master" in repository "broken/other.git" doesn't exist at revision 3 -- did you resume from the wrong revision?
+ 3 modifications from SVN /trunk/other/ to broken/other.git/master done
+Exporting revision 4     /branches/feature was copied from /trunk rev 3
+rev 4 /branches/feature/ matched rule: "broken.rules:24 /branches/([^/]+)/"    exporting.
+.broken/main.git : branch feature is branching from master
+Creating branch: "feature" from "master" ( 3 "from branch master at r3 => r2" )
+ done
+Exporting revision 5 rev 5 /trunk/bar.txt matched rule: "broken.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/bar.txt -> "master" "bar.txt" )
+rev 5 /trunk/src/bar.c matched rule: "broken.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/src/bar.c -> "master" "src/bar.c" )
+ 2 modifications from SVN /trunk/ to broken/main.git/master done
+Exporting revision 6 rev 6 /trunk/other/bar.py matched rule: "broken.rules:9 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/bar.py -> "master" "bar.py" )
+ 1 modifications from SVN /trunk/other/ to broken/other.git/master done
+Exporting revision 7 rev 7 /branches/feature/bar.txt matched rule: "broken.rules:24 /branches/([^/]+)/"    exporting.
+.add/change file ( /branches/feature/bar.txt -> "feature" "bar.txt" )
+rev 7 /branches/feature/src/bar.c matched rule: "broken.rules:24 /branches/([^/]+)/"    exporting.
+.add/change file ( /branches/feature/src/bar.c -> "feature" "src/bar.c" )
+ 2 modifications from SVN /branches/feature/ to broken/main.git/feature done
+Exporting revision 8 rev 8 /branches/feature/other/bar.py matched rule: "broken.rules:19 /branches/([^/]+)/other/"    exporting.
+.WARN: Transaction: "feature" is not a known branch in repository "broken/other.git" 
+Going to create it automatically
+add/change file ( /branches/feature/other/bar.py -> "feature" "bar.py" )
+WARN: Branch "feature" in repository "broken/other.git" doesn't exist at revision 8 -- did you resume from the wrong revision?
+Waiting 30 seconds for fast-import to finish.
+Waiting 30 seconds for fast-import to finish.
+ 1 modifications from SVN /branches/feature/other/ to broken/other.git/feature done

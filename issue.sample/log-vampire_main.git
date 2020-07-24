@@ -1,0 +1,28 @@
+progress SVN r2 branch master = :1
+progress SVN r4 branch feature = :2 # merge from :1
+progress SVN r5 branch master = :3
+progress SVN r7 branch feature = :4
+/usr/libexec/git-core/git-fast-import statistics:
+---------------------------------------------------------------------
+Alloc'd objects:       5000
+Total objects:           15 (        13 duplicates                  )
+      blobs  :            5 (        11 duplicates          0 deltas of          0 attempts)
+      trees  :            6 (         2 duplicates          4 deltas of          4 attempts)
+      commits:            4 (         0 duplicates          0 deltas of          0 attempts)
+      tags   :            0 (         0 duplicates          0 deltas of          0 attempts)
+Total branches:           2 (         2 loads     )
+      marks:              0 (        10 unique    )
+      atoms:              7
+Memory total:          2446 KiB
+       pools:          2133 KiB
+     objects:           312 KiB
+---------------------------------------------------------------------
+pack_report: getpagesize()            =       4096
+pack_report: core.packedGitWindowSize = 1073741824
+pack_report: core.packedGitLimit      = 35184372088832
+pack_report: pack_used_ctr            =          0
+pack_report: pack_mmap_calls          =          0
+pack_report: pack_open_windows        =          0 /          0
+pack_report: pack_mapped              =          0 /          0
+---------------------------------------------------------------------
+

@@ -1,0 +1,49 @@
+commit refs/heads/master
+mark :1
+committer msp <msp@localhost> 1595590909 +0000
+data 43
+Add my files
+
+svn path=/trunk/; revision=2
+
+M 100644 :18446744073709551614 bar.txt
+M 100644 :18446744073709551613 baz.txt
+M 100644 :18446744073709551612 foo.txt
+M 100644 :18446744073709551611 src/bar.c
+M 100644 :18446744073709551610 src/baz.c
+M 100644 :18446744073709551609 src/foo.c
+
+progress SVN r2 branch master = :1
+
+reset refs/heads/feature
+from :1
+
+progress SVN r4 branch feature = :1 # from branch master at r3 => r2
+
+commit refs/heads/master
+mark :2
+committer msp <msp@localhost> 1595590910 +0000
+data 57
+Add some stuff to my files
+
+svn path=/trunk/; revision=5
+
+M 100644 :18446744073709551614 bar.txt
+M 100644 :18446744073709551613 src/bar.c
+
+progress SVN r5 branch master = :2
+
+commit refs/heads/feature
+mark :3
+committer msp <msp@localhost> 1595590911 +0000
+data 68
+Add more stuff to my files
+
+svn path=/branches/feature/; revision=7
+
+M 100644 :18446744073709551614 bar.txt
+M 100644 :18446744073709551613 src/bar.c
+
+progress SVN r7 branch feature = :3
+
+checkpoint

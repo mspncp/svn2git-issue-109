@@ -1,0 +1,78 @@
++ svn-all-fast-export --debug-rules --add-metadata --rules vampire.rules example.svn
+WARNING; no identity-map or -domain specified, all commits will use default @localhost email address
+
+Loading rules from: "vampire.rules"
+Loading rules from "vampire.rules"
+Creating new repository "vampire/main.git"
+Creating new repository "vampire/other.git"
+Invoked as:' svn-all-fast-export --debug-rules --add-metadata --rules vampire.rules example.svn'
+Exporting revision 1  nothing to do
+Exporting revision 2 rev 2 /trunk/bar.txt matched rule: "vampire.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/bar.txt -> "master" "bar.txt" )
+rev 2 /trunk/baz.txt matched rule: "vampire.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/baz.txt -> "master" "baz.txt" )
+rev 2 /trunk/foo.txt matched rule: "vampire.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/foo.txt -> "master" "foo.txt" )
+rev 2 /trunk/src/bar.c matched rule: "vampire.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/src/bar.c -> "master" "src/bar.c" )
+rev 2 /trunk/src/baz.c matched rule: "vampire.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/src/baz.c -> "master" "src/baz.c" )
+rev 2 /trunk/src/foo.c matched rule: "vampire.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/src/foo.c -> "master" "src/foo.c" )
+WARN: Branch "master" in repository "vampire/main.git" doesn't exist at revision 2 -- did you resume from the wrong revision?
+ 6 modifications from SVN /trunk/ to vampire/main.git/master done
+Exporting revision 3 rev 3 /trunk/other/bar.py matched rule: "vampire.rules:9 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/bar.py -> "master" "bar.py" )
+rev 3 /trunk/other/baz.py matched rule: "vampire.rules:9 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/baz.py -> "master" "baz.py" )
+rev 3 /trunk/other/foo.py matched rule: "vampire.rules:9 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/foo.py -> "master" "foo.py" )
+WARN: Branch "master" in repository "vampire/other.git" doesn't exist at revision 3 -- did you resume from the wrong revision?
+ 3 modifications from SVN /trunk/other/ to vampire/other.git/master done
+Exporting revision 4     /branches/feature was copied from /trunk rev 3
+rev 4 /branches/feature/ matched rule: "vampire.rules:19 /branches/([^/]+)/$"    recursing.
+rev 4 /branches/feature/bar.txt matched rule: "vampire.rules:28 /branches/([^/]+)/([^/]+)"    exporting.
+.WARN: Transaction: "feature" is not a known branch in repository "vampire/main.git" 
+Going to create it automatically
+copy from branch "master" to branch "feature" @rev 3
+"WARN: repository vampire/main.git branch feature has some files copied from master@3"
+adding "master@3" : 1 as a merge point
+add/change file ( /branches/feature/bar.txt -> "feature" "bar.txt" )
+rev 4 /branches/feature/baz.txt matched rule: "vampire.rules:28 /branches/([^/]+)/([^/]+)"    exporting.
+.copy from branch "master" to branch "feature" @rev 3
+"WARN: repository vampire/main.git branch feature has some files copied from master@3"
+merge point already recorded
+add/change file ( /branches/feature/baz.txt -> "feature" "baz.txt" )
+rev 4 /branches/feature/foo.txt matched rule: "vampire.rules:28 /branches/([^/]+)/([^/]+)"    exporting.
+.copy from branch "master" to branch "feature" @rev 3
+"WARN: repository vampire/main.git branch feature has some files copied from master@3"
+merge point already recorded
+add/change file ( /branches/feature/foo.txt -> "feature" "foo.txt" )
+rev 4 /branches/feature/other/ matched rule: "vampire.rules:23 /branches/([^/]+)/other/"    exporting.
+.vampire/other.git : branch feature is branching from master
+Creating branch: "feature" from "master" ( 3 "from branch master" )
+rev 4 /branches/feature/src/ matched rule: "vampire.rules:28 /branches/([^/]+)/([^/]+)"    exporting.
+.copy from branch "master" to branch "feature" @rev 3
+"WARN: repository vampire/main.git branch feature has some files copied from master@3"
+merge point already recorded
+add/change dir ( /branches/feature/src -> "feature" "src/" )
++++WARN: Branch "feature" in repository "vampire/main.git" doesn't exist at revision 4 -- did you resume from the wrong revision?
+ 7 modifications from SVN /branches/feature/bar.txt to vampire/main.git/feature done
+Exporting revision 5 rev 5 /trunk/bar.txt matched rule: "vampire.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/bar.txt -> "master" "bar.txt" )
+rev 5 /trunk/src/bar.c matched rule: "vampire.rules:14 /trunk/"    exporting.
+.add/change file ( /trunk/src/bar.c -> "master" "src/bar.c" )
+ 2 modifications from SVN /trunk/ to vampire/main.git/master done
+Exporting revision 6 rev 6 /trunk/other/bar.py matched rule: "vampire.rules:9 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/bar.py -> "master" "bar.py" )
+ 1 modifications from SVN /trunk/other/ to vampire/other.git/master done
+Exporting revision 7 rev 7 /branches/feature/bar.txt matched rule: "vampire.rules:28 /branches/([^/]+)/([^/]+)"    exporting.
+.add/change file ( /branches/feature/bar.txt -> "feature" "bar.txt" )
+rev 7 /branches/feature/src/bar.c matched rule: "vampire.rules:28 /branches/([^/]+)/([^/]+)"    exporting.
+.add/change file ( /branches/feature/src/bar.c -> "feature" "src/bar.c" )
+ 2 modifications from SVN /branches/feature/bar.txt to vampire/main.git/feature done
+Exporting revision 8 rev 8 /branches/feature/other/bar.py matched rule: "vampire.rules:23 /branches/([^/]+)/other/"    exporting.
+.add/change file ( /branches/feature/other/bar.py -> "feature" "bar.py" )
+Waiting 30 seconds for fast-import to finish.
+Waiting 30 seconds for fast-import to finish.
+ 1 modifications from SVN /branches/feature/other/ to vampire/other.git/feature done

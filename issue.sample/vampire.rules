@@ -1,0 +1,33 @@
+
+create repository vampire/main.git
+end repository
+
+create repository vampire/other.git
+end repository
+
+
+match /trunk/other/
+  repository vampire/other.git
+  branch master
+end match
+
+match /trunk/
+  repository vampire/main.git
+  branch master
+end match
+
+match /branches/([^/]+)/$
+  action recurse
+end match
+
+match /branches/([^/]+)/other/
+  repository vampire/other.git
+  branch \1
+end match
+
+match /branches/([^/]+)/([^/]+)
+  repository vampire/main.git
+  branch \1
+  prefix \2
+end match
+

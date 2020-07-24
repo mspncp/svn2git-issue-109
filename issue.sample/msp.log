@@ -1,0 +1,107 @@
+
+##
+## msp/main.git
+##
+* commit 9eec619c74fd70916570b766cb019b0ec2207891
+| Author: msp <msp@localhost>
+| Date:   Fri Jul 24 11:41:51 2020 +0000
+| 
+|     Add more stuff to my files
+|     
+|     svn path=/branches/feature/; revision=7
+| 
+|  bar.txt   | 1 +
+|  src/bar.c | 1 +
+|  2 files changed, 2 insertions(+)
+|   
+| * commit 7876d86a1bb2ff08b19f8f6230e34940d5aae2d5
+|/  Author: msp <msp@localhost>
+|   Date:   Fri Jul 24 11:41:50 2020 +0000
+|   
+|       Add some stuff to my files
+|       
+|       svn path=/trunk/; revision=5
+|   
+|    bar.txt   | 1 +
+|    src/bar.c | 1 +
+|    2 files changed, 2 insertions(+)
+| 
+* commit 61a7ea140df032ad97dce8956e72c88fff0c64ae
+  Author: msp <msp@localhost>
+  Date:   Fri Jul 24 11:41:49 2020 +0000
+  
+      Add my files
+      
+      svn path=/trunk/; revision=2
+  
+   bar.txt   | 1 +
+   baz.txt   | 1 +
+   foo.txt   | 1 +
+   src/bar.c | 1 +
+   src/baz.c | 1 +
+   src/foo.c | 1 +
+   6 files changed, 6 insertions(+)
+
+tree of master branch:
+100644 blob ce781c47e1cab657df5ca60339bf2a578defda8a	bar.txt
+100644 blob 76018072e09c5d31c8c6e3113b8aa0fe625195ca	baz.txt
+100644 blob 257cc5642cb1a054f08cc83f2d943e56fd3ebe99	foo.txt
+100644 blob ce781c47e1cab657df5ca60339bf2a578defda8a	src/bar.c
+100644 blob 76018072e09c5d31c8c6e3113b8aa0fe625195ca	src/baz.c
+100644 blob 257cc5642cb1a054f08cc83f2d943e56fd3ebe99	src/foo.c
+
+tree of feature branch:
+100644 blob f0f5c7c766cdb85df51efef2b02dff568788e0c0	bar.txt
+100644 blob 76018072e09c5d31c8c6e3113b8aa0fe625195ca	baz.txt
+100644 blob 257cc5642cb1a054f08cc83f2d943e56fd3ebe99	foo.txt
+100644 blob f0f5c7c766cdb85df51efef2b02dff568788e0c0	src/bar.c
+100644 blob 76018072e09c5d31c8c6e3113b8aa0fe625195ca	src/baz.c
+100644 blob 257cc5642cb1a054f08cc83f2d943e56fd3ebe99	src/foo.c
+
+##
+## msp/other.git
+##
+* commit 18ba918b1bfd1e6602c99a3deb8728d2016f8335
+| Author: msp <msp@localhost>
+| Date:   Fri Jul 24 11:41:51 2020 +0000
+| 
+|     Add more stuff to other files
+|     
+|     svn path=/branches/feature/other/; revision=8
+| 
+|  bar.py | 1 +
+|  1 file changed, 1 insertion(+)
+|   
+| * commit f1377d7ba9eec2839f36fd0bea4bbfe31829dffe
+|/  Author: msp <msp@localhost>
+|   Date:   Fri Jul 24 11:41:51 2020 +0000
+|   
+|       Add some stuff to other files
+|       
+|       svn path=/trunk/other/; revision=6
+|   
+|    bar.py | 1 +
+|    1 file changed, 1 insertion(+)
+| 
+* commit 7be7297e647f8727867482e9f121a16af0e090be
+  Author: msp <msp@localhost>
+  Date:   Fri Jul 24 11:41:50 2020 +0000
+  
+      Add other files
+      
+      svn path=/trunk/other/; revision=3
+  
+   bar.py | 1 +
+   baz.py | 1 +
+   foo.py | 1 +
+   3 files changed, 3 insertions(+)
+
+tree of master branch:
+100644 blob ce781c47e1cab657df5ca60339bf2a578defda8a	bar.py
+100644 blob 76018072e09c5d31c8c6e3113b8aa0fe625195ca	baz.py
+100644 blob 257cc5642cb1a054f08cc83f2d943e56fd3ebe99	foo.py
+
+tree of feature branch:
+100644 blob f0f5c7c766cdb85df51efef2b02dff568788e0c0	bar.py
+100644 blob 76018072e09c5d31c8c6e3113b8aa0fe625195ca	baz.py
+100644 blob 257cc5642cb1a054f08cc83f2d943e56fd3ebe99	foo.py

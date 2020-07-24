@@ -1,0 +1,39 @@
+commit refs/heads/master
+mark :1
+committer msp <msp@localhost> 1595590910 +0000
+data 52
+Add other files
+
+svn path=/trunk/other/; revision=3
+
+M 100644 :18446744073709551614 bar.py
+M 100644 :18446744073709551613 baz.py
+M 100644 :18446744073709551612 foo.py
+
+progress SVN r3 branch master = :1
+
+commit refs/heads/master
+mark :2
+committer msp <msp@localhost> 1595590911 +0000
+data 66
+Add some stuff to other files
+
+svn path=/trunk/other/; revision=6
+
+M 100644 :18446744073709551614 bar.py
+
+progress SVN r6 branch master = :2
+
+commit refs/heads/feature
+mark :3
+committer msp <msp@localhost> 1595590911 +0000
+data 77
+Add more stuff to other files
+
+svn path=/branches/feature/other/; revision=8
+
+M 100644 :18446744073709551614 bar.py
+
+progress SVN r8 branch feature = :3
+
+checkpoint

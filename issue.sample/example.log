@@ -1,0 +1,62 @@
+------------------------------------------------------------------------
+r8 | msp | 2020-07-24 13:41:51 +0200 (Fr, 24 Jul 2020) | 1 line
+Changed paths:
+   M /branches/feature/other/bar.py
+
+Add more stuff to other files
+------------------------------------------------------------------------
+r7 | msp | 2020-07-24 13:41:51 +0200 (Fr, 24 Jul 2020) | 1 line
+Changed paths:
+   M /branches/feature/bar.txt
+   M /branches/feature/src/bar.c
+
+Add more stuff to my files
+------------------------------------------------------------------------
+r6 | msp | 2020-07-24 13:41:51 +0200 (Fr, 24 Jul 2020) | 1 line
+Changed paths:
+   M /trunk/other/bar.py
+
+Add some stuff to other files
+------------------------------------------------------------------------
+r5 | msp | 2020-07-24 13:41:50 +0200 (Fr, 24 Jul 2020) | 1 line
+Changed paths:
+   M /trunk/bar.txt
+   M /trunk/src/bar.c
+
+Add some stuff to my files
+------------------------------------------------------------------------
+r4 | msp | 2020-07-24 13:41:50 +0200 (Fr, 24 Jul 2020) | 1 line
+Changed paths:
+   A /branches/feature (from /trunk:3)
+
+Create feature branch
+------------------------------------------------------------------------
+r3 | msp | 2020-07-24 13:41:50 +0200 (Fr, 24 Jul 2020) | 1 line
+Changed paths:
+   A /trunk/other
+   A /trunk/other/bar.py
+   A /trunk/other/baz.py
+   A /trunk/other/foo.py
+
+Add other files
+------------------------------------------------------------------------
+r2 | msp | 2020-07-24 13:41:49 +0200 (Fr, 24 Jul 2020) | 1 line
+Changed paths:
+   A /trunk/bar.txt
+   A /trunk/baz.txt
+   A /trunk/foo.txt
+   A /trunk/src
+   A /trunk/src/bar.c
+   A /trunk/src/baz.c
+   A /trunk/src/foo.c
+
+Add my files
+------------------------------------------------------------------------
+r1 | msp | 2020-07-24 13:41:49 +0200 (Fr, 24 Jul 2020) | 1 line
+Changed paths:
+   A /branches
+   A /tags
+   A /trunk
+
+Create ttb structure
+------------------------------------------------------------------------

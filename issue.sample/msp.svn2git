@@ -1,0 +1,60 @@
++ svn-all-fast-export --debug-rules --add-metadata --rules msp-main.rules,msp-other.rules example.svn
+WARNING; no identity-map or -domain specified, all commits will use default @localhost email address
+
+Loading rules from: "msp-main.rules"
+Loading rules from "msp-main.rules"
+Loading rules from: "msp-other.rules"
+Loading rules from "msp-other.rules"
+Creating new repository "msp/main.git"
+Creating new repository "msp/other.git"
+Invoked as:' svn-all-fast-export --debug-rules --add-metadata --rules msp-main.rules,msp-other.rules example.svn'
+Exporting revision 1  nothing to do
+Exporting revision 2 rev 2 /trunk/bar.txt matched rule: "msp-main.rules:8 /trunk/"    exporting.
+.add/change file ( /trunk/bar.txt -> "master" "bar.txt" )
+rev 2 /trunk/baz.txt matched rule: "msp-main.rules:8 /trunk/"    exporting.
+.add/change file ( /trunk/baz.txt -> "master" "baz.txt" )
+rev 2 /trunk/foo.txt matched rule: "msp-main.rules:8 /trunk/"    exporting.
+.add/change file ( /trunk/foo.txt -> "master" "foo.txt" )
+rev 2 /trunk/src/bar.c matched rule: "msp-main.rules:8 /trunk/"    exporting.
+.add/change file ( /trunk/src/bar.c -> "master" "src/bar.c" )
+rev 2 /trunk/src/baz.c matched rule: "msp-main.rules:8 /trunk/"    exporting.
+.add/change file ( /trunk/src/baz.c -> "master" "src/baz.c" )
+rev 2 /trunk/src/foo.c matched rule: "msp-main.rules:8 /trunk/"    exporting.
+.add/change file ( /trunk/src/foo.c -> "master" "src/foo.c" )
+WARN: Branch "master" in repository "msp/main.git" doesn't exist at revision 2 -- did you resume from the wrong revision?
+ 6 modifications from SVN /trunk/ to msp/main.git/master done
+Exporting revision 3 rev 3 /trunk/other/bar.py matched rule: "msp-other.rules:4 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/bar.py -> "master" "bar.py" )
+rev 3 /trunk/other/baz.py matched rule: "msp-other.rules:4 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/baz.py -> "master" "baz.py" )
+rev 3 /trunk/other/foo.py matched rule: "msp-other.rules:4 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/foo.py -> "master" "foo.py" )
+WARN: Branch "master" in repository "msp/other.git" doesn't exist at revision 3 -- did you resume from the wrong revision?
+ 3 modifications from SVN /trunk/other/ to msp/other.git/master done
+Exporting revision 4     /branches/feature was copied from /trunk rev 3
+rev 4 /branches/feature/ matched rule: "msp-main.rules:17 /branches/([^/]+)/"    exporting.
+.msp/main.git : branch feature is branching from master
+Creating branch: "feature" from "master" ( 3 "from branch master at r3 => r2" )
+rev 4 /branches/feature/ matched rule: "msp-other.rules:9 /branches/([^/]+)/$"    recursing.
+rev 4 /branches/feature/other/ matched rule: "msp-other.rules:13 /branches/([^/]+)/other/"    exporting.
+.msp/other.git : branch feature is branching from master
+Creating branch: "feature" from "master" ( 3 "from branch master" )
+ done
+Exporting revision 5 rev 5 /trunk/bar.txt matched rule: "msp-main.rules:8 /trunk/"    exporting.
+.add/change file ( /trunk/bar.txt -> "master" "bar.txt" )
+rev 5 /trunk/src/bar.c matched rule: "msp-main.rules:8 /trunk/"    exporting.
+.add/change file ( /trunk/src/bar.c -> "master" "src/bar.c" )
+ 2 modifications from SVN /trunk/ to msp/main.git/master done
+Exporting revision 6 rev 6 /trunk/other/bar.py matched rule: "msp-other.rules:4 /trunk/other/"    exporting.
+.add/change file ( /trunk/other/bar.py -> "master" "bar.py" )
+ 1 modifications from SVN /trunk/other/ to msp/other.git/master done
+Exporting revision 7 rev 7 /branches/feature/bar.txt matched rule: "msp-main.rules:17 /branches/([^/]+)/"    exporting.
+.add/change file ( /branches/feature/bar.txt -> "feature" "bar.txt" )
+rev 7 /branches/feature/src/bar.c matched rule: "msp-main.rules:17 /branches/([^/]+)/"    exporting.
+.add/change file ( /branches/feature/src/bar.c -> "feature" "src/bar.c" )
+ 2 modifications from SVN /branches/feature/ to msp/main.git/feature done
+Exporting revision 8 rev 8 /branches/feature/other/bar.py matched rule: "msp-other.rules:13 /branches/([^/]+)/other/"    exporting.
+.add/change file ( /branches/feature/other/bar.py -> "feature" "bar.py" )
+Waiting 30 seconds for fast-import to finish.
+Waiting 30 seconds for fast-import to finish.
+ 1 modifications from SVN /branches/feature/other/ to msp/other.git/feature done
