@@ -158,7 +158,7 @@ mkdir -p broken
 (
     set -o xtrace
     svn-all-fast-export --debug-rules --add-metadata --rules broken.rules example.svn
-) |& tee broken.log
+) |& tee broken.svn2git
 
 
 mkdir -p fixed
@@ -166,7 +166,7 @@ mkdir -p fixed
     set -o xtrace
     svn-all-fast-export --debug-rules --add-metadata --rules main.rules,other.rules example.svn
 
-) |& tee fixed.log
+) |& tee fixed.svn2git
 
 echo
 echo "##"
