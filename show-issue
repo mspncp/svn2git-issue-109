@@ -107,8 +107,8 @@ match /branches/([^/]+)/
 end match
 EOF
 
-cat > main.rules <<EOF
-create repository fixed/main.git
+cat > msp-main.rules <<EOF
+create repository msp/main.git
 end repository
 
 match /trunk/other/
@@ -116,7 +116,7 @@ match /trunk/other/
 end match
 
 match /trunk/
-  repository fixed/main.git
+  repository msp/main.git
   branch master
 end match
 
@@ -125,17 +125,17 @@ match /branches/([^/]+)/other/
 end match
 
 match /branches/([^/]+)/
-  repository fixed/main.git
+  repository msp/main.git
   branch \1
 end match
 EOF
 
-cat > other.rules <<EOF
-create repository fixed/other.git
+cat > msp-other.rules <<EOF
+create repository msp/other.git
 end repository
 
 match /trunk/other/
-  repository fixed/other.git
+  repository msp/other.git
   branch master
 end match
 
@@ -144,7 +144,7 @@ match /branches/([^/]+)/$
 end match
 
 match /branches/([^/]+)/other/
-  repository fixed/other.git
+  repository msp/other.git
   branch \1
 end match
 
@@ -153,6 +153,35 @@ match /
 end match
 EOF
 
+cat > vampire.rules <<EOF
+
+create repository vampire/main.git
+end repository
+
+create repository vampire/other.git
+end repository
+
+
+match /trunk/other/
+  repository vampire/other.git
+  branch master
+end match
+
+match /trunk/
+  repository vampire/main.git
+  branch master
+end match
+
+match /branches/([^/]+)/other/
+  repository vampire/other.git
+  branch \1
+end match
+
+match /branches/([^/]+)/
+  repository vampire/main.git
+  branch \1
+end match
+EOF
 
 mkdir -p broken
 (
@@ -161,12 +190,18 @@ mkdir -p broken
 ) |& tee broken.svn2git
 
 
-mkdir -p fixed
+mkdir -p msp
 (
     set -o xtrace
-    svn-all-fast-export --debug-rules --add-metadata --rules main.rules,other.rules example.svn
+    svn-all-fast-export --debug-rules --add-metadata --rules msp-main.rules,msp-other.rules example.svn
 
-) |& tee fixed.svn2git
+) |& tee msp.svn2git
+
+mkdir -p broken
+(
+    set -o xtrace
+    svn-all-fast-export --debug-rules --add-metadata --rules vampire.rules example.svn
+) |& tee vampire.svn2git
 
 echo
 echo "##"
@@ -176,7 +211,7 @@ echo "##"
 svn log -v $svn_url   > example.log
 
 
-for solution in broken fixed; do
+for solution in broken msp vampire; do
     (
         for repo in main other; do
             r=$solution/$repo.git
